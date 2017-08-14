@@ -14,18 +14,17 @@
 
 
 <ion-content padding>
-  <ion-grid>
+  <ion-grid class="margin-top">
     <ion-row>
-      <ion-col col-6>{{currentCard.question}}</ion-col>
+       <div  text-center class="card">
+          <p>{{text}}</p>
+      </div>
     </ion-row>
-    <div *ngIf="displayAnswer">
-      <ion-row>
-        <ion-col col-6>{{currentCard.answer}}</ion-col>
-      </ion-row>
-    </div>
+
     <ion-row>
-      <ion-col col-6> <button (click)="onClickAnswer()" ion-button>Answer</button></ion-col>
-      <ion-col col-6> <button (click)="onClickNextCard()" ion-button>Next Card</button></ion-col>
+      <ion-col text-center col-12 col-sm><button (click)="onClickAnswer()" ion-button color="light" round>Answer</button></ion-col>
+      <ion-col text-center col-12 col-sm><button (click)="onClickSkip()" ion-button color="light" round>Skip</button></ion-col>
+      <ion-col text-center col-12 col-sm><button (click)="onClickNextCard()" ion-button color="light" round>Next Card</button></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -8,4 +8,13 @@ export class FlashCard {
       this.question = question;
   }
 
+    getAnswer():String
+    {
+        return this.answer;
+    }
+
+    getQuestion():String
+    {
+        return this.question;
+    }
 }
