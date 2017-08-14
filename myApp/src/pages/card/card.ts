@@ -11,22 +11,22 @@ import {FlashCard} from '../../common/flashCard';
 export class CardPage {
 
   private listOfFlashCards:Array<FlashCard>;
+  private text:String;
 
   private currentCard:FlashCard;
-
-  private displayAnswer:boolean;
 
   constructor(public navCtrl: NavController, private aFlashCardProvider: FlashCardProvider) {
     
     this.listOfFlashCards = this.aFlashCardProvider.findListOfFlashCards();
 
     this.currentCard = this.listOfFlashCards.pop();
+    this.text = this.currentCard.getQuestion();
     console.log(this.aFlashCardProvider.findListOfFlashCards());
   }
 
   onClickAnswer()
   {
-    this.displayAnswer = true;
+    this.text = this.currentCard.getAnswer();
   }
 
   onClickNextCard()
@@ -35,12 +35,17 @@ export class CardPage {
     if(this.listOfFlashCards.length>0)
       {
         this.currentCard = this.listOfFlashCards.pop();
-        this.displayAnswer = false;
+        this.text = this.currentCard.getQuestion();
       }
     else
       {
         //send to screen with no cards left select new deck
-       console.log("no more cards") 
+       console.log("no more cards");
       }
+  }
+
+  onClickSkip()
+  {
+    console.log("not implemented yet");
   }
 }

@@ -28,7 +28,7 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{ iconMode: 'md'}),
     HttpModule
   ],
   bootstrap: [IonicApp],
