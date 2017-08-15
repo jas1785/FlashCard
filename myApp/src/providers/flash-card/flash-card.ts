@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { MockFlashCardDB } from './mockFlashCardDB';
+import {FlashCard} from '../../common/flashCard';
 
 import 'rxjs/add/operator/map';
 
@@ -13,13 +14,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FlashCardProvider {
 
-  constructor( public aMockFlashCardDB:MockFlashCardDB) {
+  constructor(public aMockFlashCardDB:MockFlashCardDB, private http:Http) {
     console.log('Hello FlashCardProvider Provider');
   }
 
    findListOfFlashCards()
   {
-    return this.aMockFlashCardDB.generateDeck();
+    return this.http.get('https://flashcard-aedcb.firebaseio.com/.json').map(res => res.json());
   }
-
 }
