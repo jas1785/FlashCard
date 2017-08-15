@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { MockFlashCardDB } from './mockFlashCardDB';
-import {FlashCard} from '../../common/flashCard';
 
 import 'rxjs/add/operator/map';
 
@@ -14,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FlashCardProvider {
 
-  constructor(public aMockFlashCardDB:MockFlashCardDB, private http:Http) {
+  constructor(private http:Http) {
     console.log('Hello FlashCardProvider Provider');
   }
 
