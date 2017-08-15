@@ -13,7 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FlashCardProvider } from '../providers/flash-card/flash-card';
 
-import { MockFlashCardDB } from '../providers/flash-card/mockFlashCardDB';
+import { FileOpener } from '@ionic-native/file-opener';
 
 import { HttpModule } from '@angular/http';
 
@@ -45,7 +45,7 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FlashCardProvider,
-    MockFlashCardDB
+    FileOpener
   ]
 })
 export class AppModule {}
