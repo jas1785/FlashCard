@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CardPage } from '../pages/card/card';
+import { DeckPage } from '../pages/deck/deck';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,7 @@ import { FlashCardProvider } from '../providers/flash-card/flash-card';
 import { FileOpener } from '@ionic-native/file-opener';
 
 import { HttpModule } from '@angular/http';
+import { DeckProvider } from '../providers/deck/deck';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HttpModule } from '@angular/http';
     ContactPage,
     HomePage,
     TabsPage,
-    CardPage
+    CardPage,
+    DeckPage
   ],
   imports: [
     BrowserModule,
@@ -38,14 +41,16 @@ import { HttpModule } from '@angular/http';
     ContactPage,
     HomePage,
     TabsPage,
-    CardPage
+    CardPage,
+    DeckPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FlashCardProvider,
-    FileOpener
+    FileOpener,
+    DeckProvider
   ]
 })
 export class AppModule {}

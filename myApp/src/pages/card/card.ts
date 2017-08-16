@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { FlashCardProvider } from '../../providers/flash-card/flash-card';
+import { NavController, NavParams } from 'ionic-angular';
 import { FlashCard } from '../../common/flashCard';
+import { Deck } from '../../common/deck';
 
 
 @Component({
@@ -12,27 +12,20 @@ export class CardPage {
 
   private listOfFlashCards: Array<FlashCard>;
   private text: String;
+  private title:String;
 
   private currentCard: FlashCard;
 
-  constructor(public navCtrl: NavController, private aFlashCardProvider: FlashCardProvider) {
+  constructor(public navCtrl: NavController,private navParams: NavParams) {
 
-    this.listOfFlashCards = [];
+    let selectedDeck = navParams.get('selectedDeck');
 
-    this.aFlashCardProvider.findListOfFlashCards().subscribe(data => {
-      data.forEach(
-        (payload) => {
-          this.listOfFlashCards.push(
-            new FlashCard(payload.question, payload.answer))
-        })
-    },
-      (error) => { console.log(error); },
-      () => {
+    this.listOfFlashCards = selectedDeck.getFlashCards();
+    
+    this.currentCard = this.listOfFlashCards.pop();
 
-        this.shuffle(this.listOfFlashCards);
-        this.currentCard = this.listOfFlashCards.pop();
-        this.text = this.currentCard.getQuestion();
-      });
+    this.text = this.currentCard.getQuestion();
+    this.title = selectedDeck. getDeckName();
   }
 
   onClickAnswer() {
@@ -52,24 +45,5 @@ export class CardPage {
 
   onClickSkip() {
     console.log("not implemented yet");
-  }
-
-  shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
   }
 }
