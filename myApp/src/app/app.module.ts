@@ -19,6 +19,8 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { HttpModule } from '@angular/http';
 import { DeckProvider } from '../providers/deck/deck';
 
+import { ResetDeckComponent } from '../components/reset-deck/reset-deck';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +29,8 @@ import { DeckProvider } from '../providers/deck/deck';
     HomePage,
     TabsPage,
     CardPage,
-    DeckPage
+    DeckPage,
+    ResetDeckComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { DeckProvider } from '../providers/deck/deck';
     HomePage,
     TabsPage,
     CardPage,
-    DeckPage
+    DeckPage,
+    ResetDeckComponent
   ],
   providers: [
     StatusBar,

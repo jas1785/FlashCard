@@ -22,6 +22,7 @@ export class DeckPage implements OnInit{
   private decks;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private deckProvider:DeckProvider) {
+    console.log("constructor")
   }
 
   ionViewDidLoad() {
